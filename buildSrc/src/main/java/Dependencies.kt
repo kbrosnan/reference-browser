@@ -23,10 +23,10 @@ private object Versions {
 
     const val tools_espresso_core = "2.2.2"
     const val tools_espresso_version = "3.0.2"
+    const val tools_test_okhttp3 = "3.10.0"
     const val tools_test_orchestrator = "1.0.2"
     const val tools_test_rules = "1.0.2"
-    const val tools_test_runner = "1.0.2"
-    const val tools_uiautomator = "2.1.3"
+    const val tools_test_runner = "1.0.2"    const val tools_uiautomator = "2.1.3"
 }
 
 // Synchronized dependencies used by (some) modules
@@ -96,8 +96,8 @@ object Deps {
     const val tools_espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.tools_espresso_core}"
     const val tools_espresso_idling_resources = "com.android.support.test.espresso:espresso-idling-resource:${Versions.tools_espresso_version}"
     const val tools_espresso_web = "com.android.support.test.espresso:espresso-web:${Versions.tools_espresso_version}"
+    const val tools_test_okhttp3 = "com.squareup.okhttp3:mockwebserver:${Versions.tools_test_okhttp3}"
     const val tools_test_orchestrator =  "com.android.support.test:orchestrator:${Versions.tools_test_orchestrator}"
     const val tools_test_rules = "com.android.support.test:rules:${Versions.tools_test_rules}"
-    const val tools_test_runner = "com.android.support.test:runner:${Versions.tools_test_runner}"
-    const val tools_uiautomator = "com.android.support.test.uiautomator:uiautomator-v18:${Versions.tools_uiautomator}"
+    const val tools_test_runner = "com.android.support.test:runner:${Versions.tools_test_runner}"    const val tools_uiautomator = "com.android.support.test.uiautomator:uiautomator-v18:${Versions.tools_uiautomator}"
 }

@@ -1,0 +1,59 @@
+
+<html>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+      
+    function setCookie(newVal){
+	window.document.cookie = "pageStatus = " + newVal + ";";
+    }
+
+
+    function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+	    var c = ca[i];
+	    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+	    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+    }
+
+    function valSwap(){
+	currentCookie = readCookie("pageStatus");
+	if(currentCookie == null) {
+            setCookie("STALE");
+	}
+
+	if (currentCookie.localeCompare("REFRESHED") == 0) {
+            setCookie("STALE");
+	    return "My little test page";
+	} else {
+            setCookie("REFRESHED");
+	    return "My little test page - REFRESHED!";
+	}
+    }
+
+    function imgSwap(){
+	currentCookie = readCookie("pageStatus");
+	if (currentCookie.localeCompare("STALE") == 0) {
+	    return "pages/rainbow_bw.png";
+	} else {
+	    return "pages/rainbow.png";
+	}
+    }
+
+    var textToShow = valSwap();
+    var imgToShow = imgSwap();
+    $(document).ready(function() {
+        $("h1").html(textToShow);
+        $("#rainbow").attr("src", imgToShow);
+    });
+</script>
+<body>
+    <p>
+    <h1></h1>
+    <img id="rainbow" src="pages/rainbow_bw.png">
+    </p>
+</body>
+</html>
