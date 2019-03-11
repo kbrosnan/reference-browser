@@ -19,7 +19,7 @@ class SettingsViewTest {
 
     @get:Rule val browserActivityTestRule = BrowserActivityTestRule()
 
-    /* ktlint-disable no-blank-line-before-rbrace */ // This imposes unreadable grouping.
+    /* ktlint-disable no-blank-line-before-rbrace */ // This imposes unrgeadable grouping.
     @Test
     // This test verifies settings view items are all in place
     fun settingsItemsTest() {
@@ -34,11 +34,35 @@ class SettingsViewTest {
             verifyPrivacySummary()
             verifyMakeDefaultBrowserButton()
             verifyDeveloperToolsHeading()
+            verifyRemoteDebuggingText()
             verifyRemoteDebuggingToggle()
             verifyMozillaHeading()
             verifyAboutReferenceBrowserButton()
         }
     }
+    @Test
+    // so less flaky, we only test redirect to github login
+    // (redirect happens with / without WIFI enabled)
+    fun openFXATest() {
+        navigationToolbar {
+        }.openThreeDotMenu {
+        }.openSettings {
+        }.openFXASignin {
+            verifyFXAUrl()
+        }
+    }
+
+    // Privacy button is tested in the Privacy Setting Test
+    @Test
+    fun setDefaultBrowserTest() {
+        navigationToolbar {
+        }.openThreeDotMenu {
+        }.openSettings {
+        }.makeDefaultBrowser{
+            verifyAndroidDefaultApps()
+    }
+    }
+
     @Test
     fun privacySettingsItemsTest() {
         navigationToolbar {
@@ -54,6 +78,27 @@ class SettingsViewTest {
             verifyUseTelemetryToggle()
             verifyUseTelemetryToggle()
             verifyTelemetrySummary()
+
+        }
+    }
+
+    @Test
+    fun remoteDebuggingViaUSB() {
+        navigationToolbar {
+        }.openThreeDotMenu {
+        }.openSettings {
+            toggleRemoteDebuggingOn()
+            toggleRemoteDebuggingOff()
+            toggleRemoteDebuggingOn()
+        }
+    }
+
+    @Test
+    fun aboutReferenceBrowser() {
+        navigationToolbar {
+        }.openThreeDotMenu {
+        }.openSettings {
+        }.openAboutReferenceBrowser {
 
         }
     }
