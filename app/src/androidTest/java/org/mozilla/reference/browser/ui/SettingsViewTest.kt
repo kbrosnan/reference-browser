@@ -41,8 +41,6 @@ class SettingsViewTest {
         }
     }
     @Test
-    // so less flaky, we only test redirect to github login
-    // (redirect happens with / without WIFI enabled)
     fun openFXATest() {
         navigationToolbar {
         }.openThreeDotMenu {
@@ -51,18 +49,6 @@ class SettingsViewTest {
             verifyFXAUrl()
         }
     }
-
-    // Privacy button is tested in the Privacy Setting Test
-    @Test
-    fun setDefaultBrowserTest() {
-        navigationToolbar {
-        }.openThreeDotMenu {
-        }.openSettings {
-        }.makeDefaultBrowser{
-            verifyAndroidDefaultApps()
-    }
-    }
-
     @Test
     fun privacySettingsItemsTest() {
         navigationToolbar {
@@ -81,7 +67,15 @@ class SettingsViewTest {
 
         }
     }
-
+    @Test
+    fun setDefaultBrowserTest() {
+        navigationToolbar {
+        }.openThreeDotMenu {
+        }.openSettings {
+        }.makeDefaultBrowser{
+            verifyAndroidDefaultApps()
+        }
+    }
     @Test
     fun remoteDebuggingViaUSB() {
         navigationToolbar {
@@ -92,14 +86,13 @@ class SettingsViewTest {
             toggleRemoteDebuggingOn()
         }
     }
-
     @Test
-    fun aboutReferenceBrowser() {
+    fun aboutReferenceBrowserTest() {
         navigationToolbar {
         }.openThreeDotMenu {
         }.openSettings {
         }.openAboutReferenceBrowser {
-
+            verifyAboutBrowser()
         }
     }
 }

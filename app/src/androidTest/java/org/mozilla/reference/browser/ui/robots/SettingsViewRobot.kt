@@ -35,6 +35,7 @@ class SettingsViewRobot {
         remoteDebuggingToggle().click()
         Espresso.onView(ViewMatchers.withText("ON")).check(matches(isDisplayed()))
     }
+
     fun toggleRemoteDebuggingOff() = {
         Espresso.onView(ViewMatchers.withText("ON")).check(matches(isDisplayed()))
         remoteDebuggingToggle().click()

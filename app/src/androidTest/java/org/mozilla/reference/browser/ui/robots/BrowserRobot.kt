@@ -5,7 +5,9 @@
 package org.mozilla.reference.browser.ui.robots
 
 import androidx.test.InstrumentationRegistry
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withSubstring
 import androidx.test.espresso.web.model.Atoms
 import androidx.test.espresso.web.sugar.Web.onWebView
@@ -32,6 +34,12 @@ class BrowserRobot {
     fun verifyFXAUrl() {
         val redirectUrl = "https://accounts.firefox.com/login"
         onView(withSubstring(redirectUrl))
+    }
+
+    fun verifyAboutBrowser() = {
+//        val aboutRBDataURI = "data:text/html;base64,PCFkb"
+        val aboutRBDataURI = "about:version"
+        onView(withSubstring(aboutRBDataURI))
     }
 
     class Transition {
